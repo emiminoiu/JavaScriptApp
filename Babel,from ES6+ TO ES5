@@ -1,0 +1,12 @@
+//1
+npm init // create a directory called src
+//2
+npm install babel-cli -D //install babel dependencies
+npm install babel-preset-env -D
+//3
+touch .babelrc // create a file called babelrc
+{
+  "presets":["env"]   // put this inside babelrc file
+}
+"build":"babel src -d lib" //add this script to package.json file
+npm run build //begin transpilation
