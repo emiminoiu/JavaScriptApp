@@ -1,0 +1,93 @@
+import {availableAirplanes, flightRequirements, meetsStaffRequirements} from './airplane';
+
+function displayFuelCapacity() {
+  availableAirplanes.forEach(function(element) {
+    console.log('Fuel Capacity of ' + element.name + ': ' + element.fuelCapacity);
+  });
+}
+
+displayFuelCapacity();
+
+function displayStaffStatus() {
+  availableAirplanes.forEach(function(element) {
+   console.log(element.name + ' meets staff requirements: ' + meetsStaffRequirements(element.availableStaff, flightRequirements.requiredStaff) );
+  });
+}
+
+displayStaffStatus();
+
+###########################################################################################################################################
+
+export let availableAirplanes = [{
+ name: 'AeroJet',
+ fuelCapacity: 800,
+ availableStaff: ['pilots', 'flightAttendants', 'engineers', 'medicalAssistance', 'sensorOperators'],
+ maxSpeed:1200,
+ minSpeed:300
+}, 
+{name: 'SkyJet',
+ fuelCapacity: 500,
+ availableStaff: ['pilots', 'flightAttendants'],
+ maxSpeed:800,
+ minSpeed:200
+}];
+
+export let flightRequirements = {
+  requiredStaff: 4,
+  requiredSpeedRange: 700
+};
+
+export function meetsStaffRequirements(availableStaff, requiredStaff) {
+  if (availableStaff.length >= requiredStaff) {
+    return true;
+  } else {
+    return false;
+  }
+};
+ export let meetsSpeedRangeRequirements = (maxSpeed,minSpeed,requiredSpeedRange) =>{
+  let range = maxSpeed - minSpeed;
+  if(range > requiredSpeedRange)
+      return true;
+  else
+    return false;
+}
+
+#######################################################################################################################################
+
+import {availableAirplanes, flightRequirements, meetsStaffRequirements,meetsSpeedRangeRequirements} from './airplane';
+
+function displayFuelCapacity() {
+  availableAirplanes.forEach(function(element) {
+    console.log('Fuel Capacity of ' + element.name + ': ' + element.fuelCapacity);
+  });
+}
+
+displayFuelCapacity();
+
+function displayStaffStatus() {
+  availableAirplanes.forEach(function(element) {
+   console.log(element.name + ' meets staff requirements: ' + meetsStaffRequirements(element.availableStaff, flightRequirements.requiredStaff) );
+  });
+}
+function displaySpeedRangeStatus()
+{
+ availableAirplanes.forEach(function(element){  console.log(element.name +' meets speed range requirements: '+meetsSpeedRangeRequirements(element.maxSpeed,element.minSpeed,flightRequirements.requiredSpeedRange));});
+
+}
+displayStaffStatus();
+displaySpeedRangeStatus();
+
+
+########################################################################################################################################
+
+
+Modules in JavaScript are reusable pieces of code that can be exported from one program and imported for use in another program.
+
+module.exports exports the module for use in another program.
+require() imports the module for use in the current program.
+ES6 introduced a more flexible, easier syntax to export modules:
+
+default exports use export default to export JavaScript objects, functions, and primitive data types.
+named exports use the export keyword to export data in variables.
+named exports can be aliased with the as keyword.
+import is a keyword that imports any object, function, or data type.
